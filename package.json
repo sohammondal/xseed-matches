@@ -5,9 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start.dev": "nodemon server.js",
+    "start:server": "nodemon server.js",
+    "start:client": "npm start --prefix client",
+    "app": "concurrently \"npm run start:client\" \"npm run start:server\"",
     "test": "jest --runInBand",
-    "test.dev": "jest --runInBand --detectOpenHandles --collectCoverage"
+    "test:dev": "jest --runInBand --detectOpenHandles --collectCoverage"
   },
   "keywords": [
     "react",
@@ -27,6 +29,7 @@
     "mongoose": "^5.7.12"
   },
   "devDependencies": {
+    "concurrently": "^5.0.0",
     "jest": "^24.9.0",
     "nodemon": "^2.0.1",
     "supertest": "^4.0.2"
